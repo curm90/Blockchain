@@ -82,6 +82,7 @@ if __name__ == '__main__':
         # print the message from the server.
         if data['message'] == 'New block created!':
             mined_coins += 1
-            print(mined_coins)
+            print(data['message'])
+            print('Coins mined', mined_coins)
         else:
             print(data['message'])
