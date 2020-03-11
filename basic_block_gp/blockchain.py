@@ -5,6 +5,8 @@ from uuid import uuid4
 
 from flask import Flask, jsonify, request
 
+DIFFICULTY = 3
+
 
 class Blockchain(object):
     def __init__(self):
@@ -33,7 +35,7 @@ class Blockchain(object):
         block = {
             'index': len(self.chain) + 1,
             'timestamp': time(),
-            'current_transactions:'  self.current_transactions,
+            'current_transactions': self.current_transactions,
             'proof': proof,
             'previous_hash': previous_hash or self.hash(self.chain[-1])
         }
@@ -89,6 +91,7 @@ class Blockchain(object):
         :return: A valid proof for the provided block
         """
         # TODO
+
         pass
         # return proof
 
@@ -104,9 +107,7 @@ class Blockchain(object):
         correct number of leading zeroes.
         :return: True if the resulting hash is a valid proof, False otherwise
         """
-        # TODO
         pass
-        # return True or False
 
 
 # Instantiate our Node
@@ -136,6 +137,8 @@ def mine():
 def full_chain():
     response = {
         # TODO: Return the chain and its current length
+        'length': len(blockchain.chain),
+        'chain': blockchain.chain
     }
     return jsonify(response), 200
 
