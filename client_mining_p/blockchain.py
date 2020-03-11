@@ -112,10 +112,11 @@ blockchain = Blockchain()
 
 @app.route('/mine', methods=['POST'])
 def mine():
+
     data = request.get_json()
 
     if 'proof' not in data or 'id' not in data:
-        return jsonify({'message': 'Please provide proof and id'})
+        return jsonify({'message': 'Please provide proof and id'}), 400
 
     block_string = json.dumps(blockchain.last_block, sort_keys=True)
 
@@ -156,4 +157,4 @@ def last_block():
 
 # Run the program on port 5000
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)

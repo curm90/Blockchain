@@ -4,7 +4,7 @@ import requests
 import sys
 import json
 
-DIFFICULTY = 3
+DIFFICULTY = 6
 
 
 def proof_of_work(block):
@@ -19,6 +19,7 @@ def proof_of_work(block):
     proof = 0
     while valid_proof(block_string, proof) is False:
         proof += 1
+
     return proof
 
 
@@ -79,7 +80,7 @@ if __name__ == '__main__':
         # TODO: If the server responds with a 'message' 'New Block Forged'
         # add 1 to the number of coins mined and print it.  Otherwise,
         # print the message from the server.
-        if data['message'] == 'New Block Forged':
+        if data['message'] == 'New block created!':
             mined_coins += 1
             print(mined_coins)
         else:
