@@ -90,10 +90,13 @@ class Blockchain(object):
         in an effort to find a number that is a valid proof
         :return: A valid proof for the provided block
         """
-        # TODO
+       block_string = json.dumps(self.last_block, sort_keys=True)
+       proof = 0
+       while valid_proof(block_string, proof) is False:
+           proof += 1
+        
+        return proof
 
-        pass
-        # return proof
 
     @staticmethod
     def valid_proof(block_string, proof):
